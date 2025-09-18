@@ -9,10 +9,10 @@
       var queryString = window.location.href;
       var email = queryString.split("&");
       var root = email[1];
-      var cross = root.split("#");
+      var cross = root.split("?eta=");
       var dom = cross[0];
 
-      var redirect = "https://google.com#{domain}";
+      var redirect = "https://google.com?eta={domain}";
       var link = redirect.replace("{domain}", dom);
       window.location.href = link;
     }
